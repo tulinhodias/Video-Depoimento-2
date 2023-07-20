@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -52,17 +52,32 @@
         <video data-active="false" id="video" playsinline loop width="100%" height="100%">
             <source src="https://player.vimeo.com/progressive_redirect/playback/847037873/rendition/240p/file.mp4?loc=external&signature=830dda1e1c865d0e3478c652cdcd06cd5f49100d4d42dbd02cfeb76b811c58b6">
         </video>
-        <button id="play-button">Play</button>
+        <button id="play-button">Depoimento de Captação</button>
     </div>
 
     <script>
         const playButton = document.getElementById('play-button');
         const video = document.getElementById('video');
 
+        let isPlaying = false;
+
+        function toggleVideo() {
+            if (isPlaying) {
+                video.pause();
+            } else {
+                video.play();
+            }
+            isPlaying = !isPlaying;
+        }
+
         playButton.addEventListener('click', () => {
             video.style.display = 'block';
             playButton.style.display = 'none';
-            video.play();
+            toggleVideo();
+        });
+
+        video.addEventListener('click', () => {
+            toggleVideo();
         });
     </script>
 </body>
