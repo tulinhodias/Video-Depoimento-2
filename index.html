@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimeo Video Embed</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #video {
+            width: 360px;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="video-container">
+        <video data-active="false" id="video" playsinline loop width="100%" height="100%">
+            <source src="https://player.vimeo.com/progressive_redirect/playback/847037873/rendition/240p/file.mp4?loc=external&signature=830dda1e1c865d0e3478c652cdcd06cd5f49100d4d42dbd02cfeb76b811c58b6">
+        </video>
+        <button id="play-button">Play</button>
+    </div>
+
+    <script>
+        const playButton = document.getElementById('play-button');
+        const video = document.getElementById('video');
+
+        playButton.addEventListener('click', () => {
+            video.style.display = 'block';
+            playButton.style.display = 'none';
+            video.play();
+        });
+    </script>
+</body>
+
+</html>
